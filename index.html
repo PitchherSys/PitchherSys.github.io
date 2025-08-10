@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dphchad💊</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-image: url("images/mountain.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            cursor: url("./images/cursor.ico"), pointer;
+        }
+        .frosted {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 12px;
+            padding: 30px;
+            max-width: 500px;
+            width: 90%;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeSlideIn 1.2s ease-out forwards;
+        }
+        @keyframes fadeSlideIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid white;
+        }
+        h1 {
+            margin: 15px 0 5px;
+            font-size: 2em;
+        }
+        p {
+            max-width: 500px;
+            line-height: 1.5;
+        }
+        .links a {
+            display: inline-block;
+            margin: 8px;
+            padding: 8px 14px;
+            background: rgba(0,0,0,0.5);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: background 0.3s;
+        }
+        .links a:hover {
+            background: rgba(255,255,255,0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="frosted">
+        <img src="images/profile.jpg" alt="Profile Picture">
+        <h1>dphchad</h1>
+        <p>Placeholder placeholder lorem ipsum can suck my dick</p>
+        <div class="links">
+            <a href="https://github.com/yourusername">More about me</a>
+            <a href="https://github.com/yourusername">My socials</a>
+            <a href="https://github.com/yourusername">My projects</a>
+        </div>
+    </div>
+
+</body>
+</html>
