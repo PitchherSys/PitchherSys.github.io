@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -9,20 +8,18 @@
     <!-- Google Fonts: Comfortaa -->
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet" />
 
-    <!-- Audio element for ambient background music -->
+    <!-- Audio -->
     <audio id="myAudio" loop>
         <source src="audio-file.mp3" type="audio/mpeg" />
-        <!-- Fallback text for unsupported browsers -->
         Your browser does not support the audio element.
     </audio>
 
     <script>
+        // Background music
         window.addEventListener('load', () => {
             const audio = document.getElementById('myAudio');
-            audio.volume = 0.2; // Set very low volume for subtlety
+            audio.volume = 0.2;
             audio.loop = true;
-
-            // Attempt to autoplay, fallback to user interaction
             audio.play().catch(() => {
                 const resumeAudio = () => {
                     audio.play();
@@ -31,49 +28,46 @@
                 document.addEventListener('click', resumeAudio);
             });
         });
+
+        // Navigation fade + timer
+        document.addEventListener('DOMContentLoaded', function () {
+            const links = document.querySelectorAll('a.nav-link');
+            links.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.body.classList.add('fade');
+                    setTimeout(() => {
+                        window.location.href = link.href;
+                    }, 500);
+                });
+            });
+
+            // Timer logic
+            let startTime = Date.now();
+            const timerElement = document.getElementById('siteTimer');
+
+            function updateTimer() {
+                let elapsed = Math.floor((Date.now() - startTime) / 1000);
+                let minutes = String(Math.floor(elapsed / 60)).padStart(2, '0');
+                let seconds = String(elapsed % 60).padStart(2, '0');
+                timerElement.textContent = `${minutes}:${seconds}`;
+            }
+
+            setInterval(updateTimer, 1000);
+            updateTimer();
+        });
     </script>
 
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    // Attach event listener to all navigation buttons/links
-    const links = document.querySelectorAll('a.nav-link'); // Adjust selector
-
-    links.forEach(link => {
-      link.addEventListener('click', function (e) {
-        e.preventDefault(); // Prevent default immediate navigation
-
-        // Add fade class to body or main container
-        document.body.classList.add('fade');
-
-        // After transition delay, navigate to the link href
-        setTimeout(() => {
-          window.location.href = link.href;
-        }, 500); // match the CSS transition duration
-      });
-    });
-  });
-</script>
-
-
     <style>
-        /* Reset and base styles */
-        *, *::before, *::after {
-            box-sizing: border-box;
-        }
+        *, *::before, *::after { box-sizing: border-box; }
 
-.fade-out {
-  opacity: 1;
-  transition: opacity 0.5s ease-out;
-}
-
-.fade-out.fade {
-  opacity: 0;
-}
+        .fade-out { opacity: 1; transition: opacity 0.5s ease-out; }
+        .fade-out.fade { opacity: 0; }
 
         body {
             margin: 0;
             padding: 0;
-            height: 100vh; /* Full viewport height for vertical centering */
+            height: 100vh;
             background-image: url("images/mountain.png");
             background-size: cover;
             background-repeat: no-repeat;
@@ -84,13 +78,9 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            /* Add subtle dark overlay for contrast */
             position: relative;
         }
 
-        /* Optional dark overlay to enhance text readability */
         body::before {
             content: "";
             position: absolute;
@@ -99,22 +89,11 @@
             z-index: 0;
         }
 
-        /* Make sure content is above overlay */
-        .frosted {
-            position: relative;
-            z-index: 1;
-        }
+        * { cursor: url("./images/cursor.ico"), auto !important; }
 
-        /* Custom cursor with fallback */
-        * {
-            cursor: url("./images/cursor.ico"), auto !important;
-        }
-
-        /* Frosted Glass Panel */
         .frosted {
             background: rgba(255, 255, 255, 0.12);
             backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
             border-radius: 16px;
             padding: 40px 50px;
             max-width: 480px;
@@ -126,18 +105,53 @@
             box-shadow:
                 0 8px 32px rgba(0, 0, 0, 0.4),
                 0 0 15px rgba(255, 255, 255, 0.15);
-            /* Slightly increased shadow for depth */
-            box-sizing: border-box;
+            position: relative;
+            z-index: 1;
         }
 
         @keyframes fadeSlideIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Profile image styles */
+        /* Sequential Fade Animations */
+        .timer-container,
+        img,
+        h1,
+        .bio p,
+        .separator,
+        .links {
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
+        }
+
+        .timer-container { animation-delay: 1.2s; }
+        img { animation-delay: 1.4s; }
+        h1 { animation-delay: 1.6s; }
+        .bio p { animation-delay: 1.8s; }
+        .separator { animation-delay: 2.0s; }
+        .links { animation-delay: 2.2s; }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        /* Timer styling */
+        .timer-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+
+        .site-timer {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 6px 12px;
+            border-radius: 12px;
+            box-shadow: 0 0 6px rgba(255, 255, 255, 0.2);
+        }
+
         img {
             width: 160px;
             height: 160px;
@@ -150,10 +164,7 @@
         }
 
         img:hover,
-        img:focus {
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
-            outline: none;
-        }
+        img:focus { box-shadow: 0 0 20px rgba(255, 255, 255, 0.7); }
 
         h1 {
             margin: 0 0 14px;
@@ -161,10 +172,8 @@
             font-weight: 700;
             letter-spacing: 0.07em;
             text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
-            user-select: none;
         }
 
-        /* Bio paragraph */
         .bio p {
             max-width: 460px;
             margin: 0 auto 32px;
@@ -175,7 +184,6 @@
             text-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
         }
 
-        /* Separator line matching frosted panel style */
         .separator {
             border: none;
             height: 1px;
@@ -186,82 +194,55 @@
             border-radius: 2px;
         }
 
-        /* Links container: horizontally center, spaced evenly */
         .links {
-            display: flex;
-            justify-content: center;
-            gap: 24px;
-            flex-wrap: nowrap;
-            user-select: none;
-        }
+    display: flex;
+    justify-content: center;
+    gap: 16px; /* was 24px - brings buttons closer together */
+}
 
-        /* Individual link styling */
-        .links a {
-            min-width: 120px;
-            display: inline-block;
-            padding: 14px 22px;
-            background: rgba(255, 255, 255, 0.15);
-            color: #f0f0f0;
-            font-weight: 600;
-            text-decoration: none;
-            border-radius: 10px;
-            box-shadow:
-                0 4px 6px rgba(0, 0, 0, 0.25),
-                inset 0 0 8px rgba(255, 255, 255, 0.2);
-            transition:
-                background-color 0.35s ease,
-                box-shadow 0.35s ease,
-                transform 0.25s ease;
-            text-align: center;
-            user-select: none;
-            will-change: background-color, box-shadow, transform;
-        }
+.links a {
+    min-width: 105px; /* was 120px - makes buttons narrower */
+    padding: 12px 18px; /* was 14px 22px - slightly smaller buttons */
+    background: rgba(255, 255, 255, 0.15);
+    color: #f0f0f0;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 10px;
+    box-shadow:
+        0 4px 6px rgba(0, 0, 0, 0.25),
+        inset 0 0 8px rgba(255, 255, 255, 0.2);
+    transition: background-color 0.35s, box-shadow 0.35s, transform 0.25s;
+    text-align: center;
+}
 
-        .links a:hover,
-        .links a:focus {
+
+        .links a:hover {
             background: rgba(255, 255, 255, 0.35);
             box-shadow:
                 0 6px 20px rgba(255, 255, 255, 0.85),
                 inset 0 0 15px rgba(255, 255, 255, 0.6);
             transform: translateY(-2px);
-            outline: none;
         }
 
-        /* Accessibility focus ring */
-        .links a:focus-visible {
-            outline: 3px solid #fff;
-            outline-offset: 4px;
-        }
-
-        /* Responsive text scaling for smaller devices */
         @media (max-width: 400px) {
-            h1 {
-                font-size: 2rem;
-            }
-
-            .bio p {
-                font-size: 1rem;
-                padding: 0 10px;
-            }
-
-            .links {
-                gap: 16px;
-            }
-
-            .links a {
-                padding: 12px 18px;
-                min-width: 100px;
-                font-size: 0.9rem;
-            }
+            h1 { font-size: 2rem; }
+            .bio p { font-size: 1rem; padding: 0 10px; }
+            .links { gap: 16px; }
+            .links a { padding: 12px 18px; min-width: 100px; font-size: 0.9rem; }
         }
     </style>
 </head>
 
 <body>
     <main class="frosted" role="main" aria-label="Personal bio card">
-        <img src="images/profile.jpg" alt="Profile picture of dphchad" tabindex="0" />
+        <!-- Timer Above Image -->
+        <div class="timer-container">
+            <div class="site-timer">Time on site: <span id="siteTimer">00:00</span></div>
+        </div>
+
+        <img src="images/profile.jpg" alt="Profile picture of dphchad" />
         <h1>Apeiron</h1>
-        <section class="bio" id="bio">
+        <section class="bio">
             <p>Hey! I'm a 14yo amateur developer and cybersec nerd.</p>
         </section>
 
@@ -274,5 +255,4 @@
         </nav>
     </main>
 </body>
-
 </html>
