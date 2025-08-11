@@ -37,7 +37,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet" />
 
     <style>
-        /* Core styling (unchanged) */
+        /* Core styling */
         *, *::before, *::after {
             box-sizing: border-box;
         }
@@ -82,12 +82,13 @@
             z-index: 0;
         }
 
-        /* New fade + scale-in animation */
+        /* Fade + scale-in animation */
         @keyframes fadeScaleInPanel {
             0% {
                 opacity: 0;
                 transform: scale(0.85);
             }
+
             100% {
                 opacity: 1;
                 transform: scale(1);
@@ -243,18 +244,36 @@
             outline-offset: 4px;
         }
 
-        @media (max-width: 400px) {
+        /* Responsive adjustments for mobile */
+        @media (max-width: 480px) {
+            main.frosted {
+                padding: 20px 25px;
+                max-width: 320px;
+            }
+
+            img.profile-pic {
+                width: 120px;
+                margin-bottom: 16px;
+            }
+
             h1 {
                 font-size: 2rem;
+                margin-bottom: 10px;
             }
 
             p.about-text {
-                font-size: 1rem;
+                font-size: 0.95rem;
+                margin-bottom: 14px;
+            }
+
+            .back-home-container {
+                margin-top: 24px;
             }
 
             .back-home-container a {
-                font-size: 1rem;
-                padding: 12px 24px;
+                font-size: 0.95rem;
+                padding: 10px 20px;
+                border-radius: 12px;
             }
         }
     </style>
@@ -266,35 +285,35 @@
         <img src="../images/profile.jpg" alt="Profile picture of Apeiron" tabindex="0" class="profile-pic" />
         <h1>About Me</h1>
 
-<p class="about-text" tabindex="0">
-    Hello! My name is Apeiron, I'm a 14yo with a passion for coding, OS development, and cybersecurity.
-    <br /><br />
-    My main focus is Windows tweaking and small amounts of backend development. I spend many of my days researching new ways to improve Windows.
-    <br>
-    My other hobbies include gaming, listening to music, and talking to friends.
-    <br /><br />
-    I enjoy listening to metal music, generally death metal, but also other subgenres like techdeath, deathcore, and deathgrind.
-    <br>
-    I live in the CST timezone... It's <span id="time"></span> for me!
-</p>
+        <p class="about-text" tabindex="0">
+            Hello! My name is Apeiron, I'm a 14yo with a passion for coding, OS development, and cybersecurity.
+            <br /><br />
+            My main focus is Windows tweaking and small amounts of backend development. I spend many of my days researching new ways to improve Windows.
+            <br>
+            My other hobbies include gaming, listening to music, and talking to friends.
+            <br /><br />
+            I enjoy listening to metal music, generally death metal, but also other subgenres like techdeath, deathcore, and deathgrind.
+            <br>
+            I live in the CST timezone... It's <span id="time"></span> for me!
+        </p>
 
-<script>
-    function updateTime() {
-        const now = new Date();
-        const options = {
-            timeZone: "America/Chicago", // CST/CDT automatically handled
-            hour: "2-digit",
-            minute: "2-digit",
-            second: "2-digit",
-            hour12: true
-        };
-        const formatter = new Intl.DateTimeFormat([], options);
-        document.getElementById("time").textContent = formatter.format(now);
-    }
+        <script>
+            function updateTime() {
+                const now = new Date();
+                const options = {
+                    timeZone: "America/Chicago", // CST/CDT handled automatically
+                    hour: "2-digit",
+                    minute: "2-digit",
+                    second: "2-digit",
+                    hour12: true
+                };
+                const formatter = new Intl.DateTimeFormat([], options);
+                document.getElementById("time").textContent = formatter.format(now);
+            }
 
-    setInterval(updateTime, 1000);
-    updateTime();
-</script>
+            setInterval(updateTime, 1000);
+            updateTime();
+        </script>
 
         <div class="back-home-container">
             <a href="../index.html" tabindex="0" aria-label="Back to Home">← Back to Home</a>
