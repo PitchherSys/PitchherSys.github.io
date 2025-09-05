@@ -97,11 +97,24 @@ header h1 {
 }
 
 /* --- CORE LAYOUT --- */
+/* Ensure content-wrapper stretches fully and allows bottom-aligned content */
 .content-wrapper {
   display: flex;
-  flex: 1 1 auto; /* fill vertical space */
-  min-height: 0;  /* necessary for flex kids */
+  flex: 1 1 auto;
+  min-height: 0;
   align-items: stretch;
+  position: relative; /* to help with absolute positioning of the counter */
+}
+
+#project-counter {
+  display: block;           /* ensure it behaves like a block element */
+  text-align: center;       /* center text horizontally */
+  font-size: 0.9em;
+  font-style: italic;
+  color: #041006;
+  margin: 12px 0;           /* spacing from footer */
+  opacity: 0;
+  transition: opacity 1s ease;
 }
 
 /* Sidebar styling */
@@ -252,3 +265,11 @@ footer {
 /* little tweaks for spacing */
 .panel .glossy-button { margin-top: 12px; }
 .panel h2 { margin-bottom: 12px; }
+
+.project-timer {
+  font-size: 0.8em;
+  font-style: italic;
+  color: #041006;
+  margin-left: 10px;
+  vertical-align: middle;
+}

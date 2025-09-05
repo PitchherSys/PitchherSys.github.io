@@ -1,89 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <!-- meta for mobile stuff, because apparently people still browse on phones /j -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Projects</title>
-    
-    <!-- link to styles (no inline horrors here) -->
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projects</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<div class="container">
+  <div class="container">
 
+    <!-- Header + scrolling text -->
     <div class="header-wrapper">
-        <header>
-            <div class="logo" aria-hidden="true">
-                <!-- reused SVG logo from index.html, because why reinvent -->
-            </div>
-            <h1>Projects</h1>
-        </header>
-
-        <div class="scrolling-text-container">
-            <div class="scrolling-text">
-                <p>Here are some of the things I've been working on...</p>
-            </div>
+      <header>
+        <div class="logo" aria-hidden="true">
+          <!-- SVG logo is reused from index.html -->
         </div>
+        <h1>Projects</h1>
+      </header>
+
+      <div class="scrolling-text-container">
+        <div class="scrolling-text">
+          <p>Here are some of the things I've been working on...</p>
+        </div>
+      </div>
     </div>
 
-    <!-- content wrapper: sidebar + main panel -->
+    <!-- Content wrapper: sidebar + main panel -->
     <div class="content-wrapper">
+      
+      <!-- Sidebar -->
+      <nav class="sidebar" aria-label="Main navigation">
+        <h3>Main Content</h3>
+        <div class="nav">
+          <a href="index.html">Introduction</a>
+          <a href="projects.html" class="active">Projects</a>
+          <a href="contact.html">Contact</a>
+          <a href="blog.html">Blog</a>
+        </div>
+      </nav>
 
-        <!-- sidebar nav -->
-        <nav class="sidebar" aria-label="Main navigation">
-            <h3>Main Content</h3>
-            <div class="nav">
-                <a href="index.html">Introduction</a>
-                <a href="projects.html" class="active">Projects</a>
-                <a href="contact.html">Contact</a>
-                <a href="blog.html">Blog</a>
-                <!-- TODO: maybe highlight new projects automatically? someday -->
+      <!-- Main Content -->
+      <main>
+        <section class="panel">
+          <h2>My Projects</h2>
+          <p>Below are a few examples of my work. Click any button to see details or downloads.</p>
+
+          <div class="project-list">
+
+            <!-- Project: opti-input -->
+            <div class="project-item">
+              <h3>
+                opti-input
+                <span class="project-timer" title="Time since last update"></span>
+              </h3>
+              <p>Small, lightweight, and open-source PowerShell application designed to reduce the overall latency of your keyboard and mouse.</p>
+              <button class="glossy-button" onclick="viewProject('opti-input')">View Project</button>
             </div>
-        </nav>
 
-        <!-- main section -->
-        <main>
-            <section class="panel">
-                <h2>My Projects</h2>
-                <p>Below are a few examples of my work. Click any button to see details or downloads.</p>
+            <!-- Project: NihilOS -->
+            <div class="project-item">
+              <h3>
+                NihilOS
+                <span class="project-timer" title="Time since last update"></span>
+              </h3>
+              <p>An incredibly lightweight and open-source Windows based OS built from scratch, designed to improve system performance. [In Progress]</p>
+              <button class="glossy-button" onclick="viewProject('NihilOS')">View Project</button>
+            </div>
 
-                <div class="project-list">
-                    <div class="project-item">
-                        <h3>opti-input</h3>
-                        <p>Small, lightweight, and open-source PowerShell application designed to reduce the overall latency of your keyboard and mouse.</p>
-                        <button class="glossy-button" onclick="viewProject('opti-input')">View Project</button>
-                        <!-- TODO: replace alert with real project modal eventually -->
-                    </div>
-                    <div class="project-item">
-                        <h3>NihilOS</h3>
-                        <p>An incredibly lightweight and open-source Windows based OS built from scratch, designed to improve system performance. [In Progress]</p>
-                        <button class="glossy-button" onclick="viewProject('NihilOS')">View Project</button>
-                        <!-- TODO: add screenshots or links later -->
-                    </div>
-                </div>
-            </section>
-        </main>
+          </div>
+        </section>
+      </main>
     </div>
 
-    <!-- footer -->
+    <!-- Footer -->
     <footer>
-        <div>© 2025 The Prince of Life</div>
+      <div>© 2025 The Prince of Life</div>
     </footer>
 
-</div>
+  </div>
 
-<script>
-    // simple dev-style placeholder function for project buttons
-    function viewProject(name) {
-        if (name === 'opti-input') {
-            // direct to GitHub repo
-            window.open('https://github.com/PitchherSys/opti-input', '_blank');
-        } else {
-            // fallback for other projects
-            alert('You clicked to view ' + name + '. This will eventually go somewhere.');
-            console.log('Button clicked for project:', name);
-        }
-    }
-</script>
+  <!-- Scripts -->
+  <script src="script.js"></script>
+</body>
+</html>
