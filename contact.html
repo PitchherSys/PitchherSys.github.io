@@ -9,72 +9,12 @@
     
     <!-- external stylesheet -->
     <link rel="stylesheet" href="style.css">
-
-    <style>
-        /* main container tweaks */
-        main {
-            display: flex;
-            justify-content: center;
-            padding: 30px 20px; /* yeah, eyeballed it */
-        }
-
-        .panel {
-            background: linear-gradient(to bottom, #ffffff, #d0ebff);
-            border: 2px solid #80c0ff;
-            border-radius: 12px;
-            padding: 30px 25px;
-            max-width: 600px;
-            width: 100%;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.25), inset 0 2px 6px rgba(255,255,255,0.4);
-            text-align: center;
-        }
-
-        .panel h2 {
-            text-shadow: 1px 1px 0 #fff;
-            margin-bottom: 20px; /* spacing is life */
-        }
-
-        .panel p {
-            margin-bottom: 20px;
-            color: #041006;
-        }
-
-        /* Buttons for contact methods */
-        .contact-list {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            padding: 0;
-            margin: 0;
-        }
-
-        .contact-list a {
-            display: block;
-            text-decoration: none;
-            color: #003366;
-            font-weight: bold;
-            padding: 12px 20px;
-            border-radius: 8px;
-            border: 2px solid #80c0ff;
-            background: linear-gradient(to bottom, #ffffff, #d0ebff);
-            box-shadow: inset 0 2px 4px rgba(255,255,255,0.4);
-            transition: background 0.25s, transform 0.2s;
-        }
-
-        .contact-list a:hover {
-            background: linear-gradient(to bottom, #e0f0ff, #a0d0ff);
-            transform: translateY(-2px);
-        }
-
-        /* responsive adjustments */
-        @media (max-width: 600px) {
-            .panel { padding: 20px 15px; }
-            .contact-list a { padding: 10px 15px; }
-        }
-    </style>
 </head>
 <body>
 <div class="container">
+
+<!-- floating background bubbles -->
+  <div class="bubble-container"></div>
 
     <div class="header-wrapper">
         <header>
@@ -117,6 +57,9 @@
             </section>
         </main>
     </div>
+
+    <!-- extra js file (misc stuff lives here) -->
+<script src="script.js"></script>
 
     <!-- footer -->
     <footer>

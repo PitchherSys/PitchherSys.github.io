@@ -9,12 +9,13 @@
 <body>
   <div class="container">
 
+    <!-- floating background bubbles -->
+    <div class="bubble-container"></div>
+
     <!-- Header + scrolling text -->
     <div class="header-wrapper">
       <header>
-        <div class="logo" aria-hidden="true">
-          <!-- SVG logo is reused from index.html -->
-        </div>
+        <div class="logo" aria-hidden="true"></div>
         <h1>Projects</h1>
       </header>
 
@@ -43,30 +44,17 @@
       <main>
         <section class="panel">
           <h2>My Projects</h2>
-          <p>Below are a few examples of my work. Click any button to see details or downloads.</p>
+          <p>Below are a few examples of my work. Click any project to view details or downloads:</p>
 
-          <div class="project-list">
-
-            <!-- Project: opti-input -->
-            <div class="project-item">
-              <h3>
-                opti-input
-                <span class="project-timer" title="Time since last update"></span>
-              </h3>
-              <p>Small, lightweight, and open-source PowerShell application designed to reduce the overall latency of your keyboard and mouse.</p>
-              <button class="glossy-button" onclick="viewProject('opti-input')">View Project</button>
-            </div>
-
-            <!-- Project: NihilOS -->
-            <div class="project-item">
-              <h3>
-                NihilOS
-                <span class="project-timer" title="Time since last update"></span>
-              </h3>
-              <p>An incredibly lightweight and open-source Windows based OS built from scratch, designed to improve system performance. [In Progress]</p>
-              <button class="glossy-button" onclick="viewProject('NihilOS')">View Project</button>
-            </div>
-
+          <div class="contact-list">
+            <a href="#" onclick="viewProject('opti-input')">
+              <strong>opti-input</strong><br>
+              <small>Lightweight PowerShell app to reduce keyboard/mouse latency.</small>
+            </a>
+            <a href="#" onclick="viewProject('NihilOS')">
+              <strong>NihilOS</strong><br>
+              <small>An incredibly lightweight and open-source Windows based OS built from scratch, designed to improve system performance. [In Progress]</small>
+            </a>
           </div>
         </section>
       </main>

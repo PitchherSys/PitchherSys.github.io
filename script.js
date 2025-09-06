@@ -82,3 +82,46 @@ function viewProject(name) {
     console.log('Button clicked for project:', name);
   }
 }
+  document.addEventListener("DOMContentLoaded", () => {
+    const container = document.querySelector(".bubble-container");
+
+    for (let i = 0; i < 30; i++) { // number of bubbles
+      const bubble = document.createElement("div");
+
+      // pick a random size
+      const sizes = ["small", "medium", "large"];
+      bubble.className = "bubble " + sizes[Math.floor(Math.random() * sizes.length)];
+
+      // random horizontal start position
+      bubble.style.left = Math.random() * 100 + "%";
+
+      // random delay so they don’t all rise together
+      bubble.style.animationDelay = Math.random() * 30 + "s";
+
+      container.appendChild(bubble);
+    }
+  });
+
+  document.addEventListener('DOMContentLoaded', () => {
+  const triggers = document.querySelectorAll('.modal-trigger');
+  const backdrop = document.querySelector('.floating-backdrop');
+  const closeButtons = document.querySelectorAll('.floating-close');
+
+  triggers.forEach(trigger => {
+    trigger.addEventListener('click', e => {
+      e.preventDefault();
+      const modalId = trigger.dataset.modal;
+      const modal = document.getElementById(modalId);
+      modal.classList.add('active');
+      backdrop.classList.add('active');
+    });
+  });
+
+  function closeModal() {
+    document.querySelectorAll('.floating-window.active').forEach(modal => modal.classList.remove('active'));
+    backdrop.classList.remove('active');
+  }
+
+  backdrop.addEventListener('click', closeModal);
+  closeButtons.forEach(btn => btn.addEventListener('click', closeModal));
+});
